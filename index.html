@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular Workshop</title>
+    
+    <!-- 3rd Party Libraries -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Our own styles -->
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body ng-app="MyApp">
+
+    <!-- .navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header"><a href="#" class="navbar-brand">Angular Workshop</a></div>
+        </div>
+    </nav>
+    <!-- end .navbar -->
+
+    <!-- .container -->
+    <div class="container" ng-controller="AppController">
+        <div class="row">
+            <div class="chatbox-wrapper col-md-8">
+                <h4>Chat Box</h4>
+                <div class="chatbox">
+                    <p class="message" ng-repeat="message in messages" style="color: {{ message.color }}">
+                        <span class="user">{{ message.author }}</span>: {{ message.content }}
+                    </p>
+                    <form class="form-inline chatbox-controls" ng-submit="submit()">
+                        <div class="form-group">
+                            <textarea name="message" ng-model="message" class="form-control" id="message" cols="65" rows="2"></textarea>
+                            <button class="btn btn-default btn-lg" type="submit">
+                                <span ng-if="isUsernameSet">Send</span>
+                                <span ng-if="!isUsernameSet">Use</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="chatbox-sidebar col-md-4">
+                <h4>People ({{ people.length }})</h4>
+                <ul class="online">
+                    <li ng-repeat="person in people" style="color: {{ person.userColor }}">{{ person.username }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end .container -->
+
+    <!-- 3rd Party Libraries -->
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <!-- Our own scripts (Make sure that the angular.js loads first before our own script, else you'll get errors) -->
+    <script type="text/javascript" src="scripts/angular.app.js"></script>
+    <script type="text/javascript" src="scripts/services/websocketprovider.js"></script>
+</body>
+</html>

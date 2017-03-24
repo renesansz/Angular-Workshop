@@ -1,0 +1,21 @@
+{
+  "name": "angular-workshop",
+  "version": "1.0.0",
+  "description": "Angular Workshop by Renemari Padillo",
+  "main": "websocket-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "angularjs"
+  ],
+  "author": "Renemari Padillo <padillo.renemari@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.2",
+    "redis": "^2.7.1",
+    "socket.io": "^1.7.3",
+    "websocket": "^1.0.24"
+  }
+}

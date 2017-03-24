@@ -1,0 +1,19 @@
+.chatbox-wrapper,
+.chatbox-sidebar {
+    padding: 10px 15px;
+    height: 600px;
+}
+.chatbox {
+    padding: 5px 5px 45px;
+    height: 540px;
+    overflow: auto;
+}
+.chatbox .chatbox-controls {
+    position: absolute;
+    bottom: 0;
+}
+.chatbox .chatbox-controls textarea {
+    display: inline-block;
+    vertical-align: bottom;
+    resize: none;
+}
