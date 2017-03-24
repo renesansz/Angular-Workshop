@@ -6,7 +6,7 @@
         .module('MyApp', [])
         .controller('AppController', AppController);
 
-    function AppController($scope, WebsocketProvider) {
+    function AppController($scope) {
         var session = null;
 
         $scope.isUsernameSet = false;
@@ -23,35 +23,16 @@
             if (json) {
                 switch(json.type) {
                     case WebsocketProvider.BROADCAST_TYPE.ON_USER_CONNECT:
-                        $scope.people = json.data;
-                        $scope.$digest();
                     break;
                     case WebsocketProvider.BROADCAST_TYPE.ON_NEW_USER_CONNECT:
-                        $scope.people.push(json.data.user)
-
-                        delete json.data.user; // We don't need this to be included
-
-                        // Append message
-                        $scope.messages.push(json.data);
-                        $scope.$digest();
                     break;
                     case WebsocketProvider.BROADCAST_TYPE.ON_USER_DISCONNECT:
-                        $scope.messages.push(json.data);
-                        $scope.people = json.data.people;
-                        $scope.$digest();
                     break;
                     case WebsocketProvider.BROADCAST_TYPE.ON_COLOR_ASSIGNED:
-                        if (session) {
-                            session.color = json.data;
-                        }
                     break;
                     case WebsocketProvider.BROADCAST_TYPE.FETCH_HISTORY:
-                        $scope.messages = json.data;
-                        $scope.$digest();
                     break;
                     case WebsocketProvider.BROADCAST_TYPE.ON_MESSAGE_RECEIVED:
-                        $scope.messages.push(json.data);
-                        $scope.$digest();
                     break;
                     default:
                         console.error('Unrecognized JSON type');
