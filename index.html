@@ -11,7 +11,7 @@
     <!-- Our own styles -->
     <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body ng-app="MyApp">
+<body>
 
     <!-- .navbar -->
     <nav class="navbar navbar-default">
@@ -22,15 +22,12 @@
     <!-- end .navbar -->
 
     <!-- .container -->
-    <div class="container" ng-controller="AppController">
+    <div class="container">
         <div class="row">
             <div class="chatbox-wrapper col-md-8">
                 <h4>Chat Box</h4>
                 <div class="chatbox">
-                    <p class="message" ng-repeat="message in messages">
-                        <span class="user">{{ message.user }}</span>: {{ message.content }}
-                    </p>
-                    <!--<p class="message" style="color: red">
+                    <p class="message" style="color: red">
                         <span class="user">Jolli Bebeng</span>: Hola!
                     </p>
                     <p class="message" style="color: green">
@@ -44,22 +41,21 @@
                     </p>
                     <p class="message" style="color: green">
                         <span class="user">Mac Dodongs</span>: Konichiwa
-                    </p>-->
-                    <form class="form-inline chatbox-controls" ng-submit="sendMessage()">
+                    </p>
+                    <form class="form-inline chatbox-controls">
                         <div class="form-group">
-                            <textarea name="message"class="form-control" id="message" cols="65" rows="2" ng-model="message"></textarea>
+                            <textarea name="message"class="form-control" id="message" cols="65" rows="2"></textarea>
                             <button class="btn btn-default btn-lg" type="submit">Send</button>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="chatbox-sidebar col-md-4">
-                <h4>People ({{ people.length }})</h4>
+                <h4>People (3)</h4>
                 <ul class="online">
-                    <li ng-repeat="person in people">{{ person.name }}</li>
-                    <!--<li style="color: red">Jolli Bebeng</li>
+                    <li style="color: red">Jolli Bebeng</li>
                     <li style="color: green">Mac Dodongs</li>
-                    <li style="color: blue">George Tilap</li>-->
+                    <li style="color: blue">George Tilap</li>
                 </ul>
             </div>
         </div>
@@ -69,45 +65,6 @@
     <!-- 3rd Party Libraries -->
     <script type="text/javascript" src="bower_components/angular/angular.js"></script>
     <!-- Our own scripts (Make sure that the angular.js loads first before our own script, else you'll get errors) -->
-    <script type="text/javascript">
-        var app = angular.module('MyApp', []);
-        
-        app.controller('AppController', function ($scope) {
-            var currentUser = '';
-
-            $scope.people = [
-                {
-                    name: 'Jolli Bebeng'
-                },
-                {
-                    name: 'Mac dodong'
-                }
-            ]
-
-            $scope.messages = [
-                {
-                    user: 'Jolli Bebeng',
-                    content: 'Hi!'
-                },
-                {
-                    user: 'Mac Dodong',
-                    content: 'Hello!'
-                }
-            ];
-
-            $scope.sendMessage = function () {
-                if (currentUser.length == 0) {
-                    currentUser = $scope.message;
-                } else {
-                    $scope.messages.push({
-                        user: currentUser,
-                        content: $scope.message
-                    });
-                }
-
-                $scope.message = '';
-            };
-        });
-    </script>
+    <script type="text/javascript"></script>
 </body>
 </html>
